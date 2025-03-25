@@ -1,0 +1,34 @@
+ymaps.ready(init);
+
+function init() {
+    var myMap = new ymaps.Map("map", {
+        center: [52.853485, 70.507365], // Координаты Трамбовки
+        zoom: 10,
+        type: "yandex#hybrid",
+        controls: ['zoomControl', 'fullscreenControl']
+    });
+
+    myMap.options.set("yandexMapAutoSwitch", true);
+
+    // Точки на карте
+    var locations = [
+        { coords: [52.853485, 70.507365], name: "Трамбовка", description: "Село Трамбовка" },
+        { coords: [52.7181, 70.7697], name: "Степняк", description: "Город Степняк" },
+        { coords: [52.9356, 70.6213], name: "Ульги", description: "Село Ульги" },
+        { coords: [52.7802, 70.3254], name: "Жукей", description: "Озеро Жукей" },
+        { coords: [52.9000, 70.4000], name: "Уюмшил", description: "Село Уюмшил" },
+        { coords: [52.8200, 70.4800], name: "Карловка", description: "Село Карловка" },
+        { coords: [52.7500, 70.5500], name: "Гора Беркуты", description: "Гора Беркуты" },
+        { coords: [52.7700, 70.5300], name: "Озеро Жукей", description: "Озеро Жукей" },
+        { coords: [52.8500, 70.5000], name: "Озеро в Трамбовке", description: "Озеро в Трамбовке" }
+    ];
+
+    locations.forEach(function (place) {
+        var placemark = new ymaps.Placemark(place.coords, {
+            hintContent: place.name,
+            balloonContent: place.description
+        });
+
+        myMap.geoObjects.add(placemark);
+    });
+}
