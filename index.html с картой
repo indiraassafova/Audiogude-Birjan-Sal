@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Карта села Трамбовка</title>
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=08e8fb97-70b5-46ad-afc4-efadebee5c61&lang=ru_RU" type="text/javascript"></script>
+    <style>
+        #map {
+            width: 100%;
+            height: 500px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Карта села Трамбовка и окрестностей</h2>
+    <div id="map"></div>
+
+    <script>
+        ymaps.ready(init);
+        function init() {
+            var myMap = new ymaps.Map("map", {
+                center: [52.853485, 70.507365], // Центр на Трамбовке
+                zoom: 9
+            });
+
+            // Список точек
+            var places = [
+                { coords: [52.853485, 70.507365], name: 'Трамбовка', description: 'Село Трамбовка, Казахстан' },
+                { coords: [52.900000, 70.600000], name: 'Озеро Бощеколь', description: 'Красивое озеро' },
+                { coords: [52.950000, 70.700000], name: 'Гора Беркуты', description: 'Известная гора' },
+                { coords: [52.870000, 70.650000], name: 'Озеро Жукей', description: 'Природное озеро' },
+                { coords: [52.880000, 70.580000], name: 'Утёс Жер тас', description: 'Исторический утёс' },
+                { coords: [52.920000, 70.680000], name: 'Скала Биржан Сал', description: 'Знаменитая скала' },
+                { coords: [52.793056, 70.773333], name: 'Степняк', description: 'Город Степняк' },
+                { coords: [52.7025, 70.5767], name: 'Ульги', description: 'Село Ульги' },
+                { coords: [52.8875, 70.6422], name: 'Жукей', description: 'Село Жукей' },
+                { coords: [52.7200, 70.5000], name: 'Уюмшил', description: 'Село Уюмшил' },
+                { coords: [52.8100, 70.4300], name: 'Карловка', description: 'Село Карловка' }
+            ];
+
+            // Добавление точек на карту
+            places.forEach(function(place) {
+                var placemark = new ymaps.Placemark(place.coords, {
+                    hintContent: place.name,
+                    balloonContent: place.description
+                });
+
+                myMap.geoObjects.add(placemark);
+            });
+        }
+    </script>
+
+</body>
+</html>
