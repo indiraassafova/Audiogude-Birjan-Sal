@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Аудиогид Биржан-Сал</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=08e8fb97-70b5-46ad-afc4-efadebee5c61&lang=ru_RU" type="text/javascript"></script>
+    <style>
+        #map {
+            width: 100%;
+            height: 500px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Аудиогид по району Биржан-Сал</h1>
+</header>
+
+<main>
+    <p>Добро пожаловать! Здесь вы найдете интересные истории и маршруты по району Биржан-Сал.</p>
+    <h2>Карта села Трамбовка</h2>
+    <div id="map"></div>
+</main>
+
+<footer>
+    <p>&copy; 2025 Аудиогид по району Биржан-Сал</p>
+</footer>
+
+<script>
+    ymaps.ready(init);
+    function init() {
+        var myMap = new ymaps.Map("map", {
+            center: [52.853485, 70.507365], // Координаты Трамбовки
+            zoom: 14
+        });
+
+        var myPlacemark = new ymaps.Placemark([52.853485, 70.507365], {
+            hintContent: 'Трамбовка',
+            balloonContent: 'Село Трамбовка, Казахстан'
+        });
+
+        myMap.geoObjects.add(myPlacemark);
+    }
+</script>
+
+</body>
+</html>
