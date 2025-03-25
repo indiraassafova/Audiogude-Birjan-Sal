@@ -1,16 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Аудиогид Биржан-Сал</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=08e8fb97-70b5-46ad-afc4-efadebee5c61&lang=ru_RU" type="text/javascript"></script>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Аудиогид по району Биржан-Сал</h1>
+    </header>
+
+    <main>
+        <p>Добро пожаловать! Здесь вы найдете интересные истории и маршруты.</p>
+        <div id="map"></div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Аудиогид по району Биржан-Сал</p>
+    </footer>
+</body>
+</html>
 ymaps.ready(init);
 
 function init() {
     var myMap = new ymaps.Map("map", {
-        center: [52.853485, 70.507365], // Координаты Трамбовки
+        center: [52.853485, 70.507365], // Координаты центра (Трамбовка)
         zoom: 10,
-        type: "yandex#hybrid",
         controls: ['zoomControl', 'fullscreenControl']
     });
 
-    myMap.options.set("yandexMapAutoSwitch", true);
-
-    // Точки на карте
+    // Список точек с координатами
     var locations = [
         { coords: [52.853485, 70.507365], name: "Трамбовка", description: "Село Трамбовка" },
         { coords: [52.7181, 70.7697], name: "Степняк", description: "Город Степняк" },
@@ -23,6 +45,7 @@ function init() {
         { coords: [52.8500, 70.5000], name: "Озеро в Трамбовке", description: "Озеро в Трамбовке" }
     ];
 
+    // Добавляем метки на карту
     locations.forEach(function (place) {
         var placemark = new ymaps.Placemark(place.coords, {
             hintContent: place.name,
