@@ -1,28 +1,43 @@
-ymaps.ready(init);
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Аудиогид Биржан-Сал</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=08e8fb97-70b5-46ad-afc4-efadebee5c61&lang=ru_RU" type="text/javascript"></script>
+    <script src="script.js" defer></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        #map {
+            width: 100%;
+            height: 500px;
+            margin: 20px auto;
+            border: 2px solid #333;
+            border-radius: 8px;
+        }
+        header, footer {
+            background: #333;
+            color: white;
+            padding: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Аудиогид по району Биржан-Сал</h1>
+    </header>
 
-function init() {
-    var myMap = new ymaps.Map("map", {
-        center: [52.853485, 70.507365], // Центр карты — Трамбовка
-        zoom: 10
-    });
+    <main>
+        <p>Добро пожаловать! Здесь вы найдете интересные истории и маршруты.</p>
+        <div id="map"></div>
+    </main>
 
-    // Точки на карте
-    var places = [
-        { coords: [52.853485, 70.507365], name: "Трамбовка", desc: "Село Трамбовка, Казахстан" },
-        { coords: [52.828190, 70.783249], name: "Степняк", desc: "Город Степняк" },
-        { coords: [52.812160, 70.596054], name: "Ульги", desc: "Село Ульги" },
-        { coords: [52.704911, 70.427726], name: "Жукей", desc: "Озеро Жукей" },
-        { coords: [52.892845, 70.561721], name: "Уюмшил", desc: "Село Уюмшил" },
-        { coords: [52.904442, 70.523994], name: "Карловка", desc: "Село Карловка" },
-        { coords: [52.729000, 70.410000], name: "Гора Беркуты", desc: "Гора Беркуты" },
-        { coords: [52.710000, 70.440000], name: "Озеро Жукей", desc: "Озеро Жукей" },
-        { coords: [52.850000, 70.500000], name: "Озеро в Трамбовке", desc: "Озеро в Трамбовке" }
-    ];
-
-    places.forEach(function(place) {
-        var placemark = new ymaps.Placemark(place.coords, {
-            hintContent: place.name,
-            balloonContent: place.desc
-        });
-        myMap.geoObjects.add(placemark);
-    });
+    <footer>
+        <p>&copy; 2025 Аудиогид по району Биржан-Сал</p>
+    </footer>
+</body>
+</html>
