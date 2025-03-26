@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Аудиогид по району Биржан Сал</title>
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        #map {
+            width: 80%;
+            height: 500px;
+            margin: 20px auto;
+            border: 2px solid #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Аудиогид по району Биржан Сал</h1>
+    <div id="map"></div>
+
+    <script>
+        ymaps.ready(init);
+        function init() {
+            var map = new ymaps.Map("map", {
+                center: [52.5, 70], // Координаты центра карты (пример)
+                zoom: 8
+            });
+
+            var places = [
+                { coords: [52.634, 70.393], name: "Степняк" },
+                { coords: [52.78, 70.1], name: "Трамбовка" },
+                { coords: [52.61, 70.5], name: "Жукей" },
+                { coords: [52.45, 70.4], name: "Озеро Жокей" }
+            ];
+
+            places.forEach(place => {
+                var placemark = new ymaps.Placemark(place.coords, { balloonContent: place.name });
+                map.geoObjects.add(placemark);
+            });
+        }
+    </script>
+</body>
+</html>
